@@ -1,0 +1,11 @@
+// Arreglo con 5 posiciones
+let valores = [0, 0, 0, 0, 0];
+
+// Lista de animales
+let animales = ["gato", "perro", "loro"];
+
+// Poner un valor en la primera posición
+valores[0] = 25;
+
+// Mostrar el segundo elemento de la lista
+console.log(animales[1]);
