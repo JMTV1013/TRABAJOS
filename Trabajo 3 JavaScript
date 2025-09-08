@@ -1,0 +1,31 @@
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+let valores = [3, 6, 9, 12, 15];
+
+rl.question("Escribe un número a localizar: ", (input) => {
+  let buscado = parseInt(input);
+  let posicion = -1;
+
+  for (let i = 0; i < valores.length; i++) {
+    if (valores[i] === buscado) {
+      posicion = i;
+      break;
+    }
+  }
+
+  if (posicion !== -1) {
+    console.log("Se encontró el valor en la posición: " + posicion);
+  } else {
+    console.log("El valor no está en el arreglo");
+  }
+
+  console.log("Estos son los elementos del arreglo:");
+  valores.forEach((v) => console.log(v));
+
+  rl.close();
+});
