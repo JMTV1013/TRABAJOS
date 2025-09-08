@@ -1,0 +1,19 @@
+valores = [2, 4, 6, 8, 10]
+
+buscado = int(input("Escribe un número a localizar: "))
+
+posicion = -1
+
+for i, elem in enumerate(valores):
+    if elem == buscado:
+        posicion = i
+        break
+
+if posicion != -1:
+    print(f"Se encontró el valor en la posición: {posicion}")
+else:
+    print("El valor no está en el arreglo")
+
+print("Estos son los elementos del arreglo:")
+for v in valores:
+    print(v)
