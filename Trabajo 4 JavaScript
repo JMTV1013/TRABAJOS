@@ -1,0 +1,25 @@
+class Forma {
+    constructor(tono) {
+        this.tono = tono;
+    }
+    calcular() {
+        throw "Método abstracto";
+    }
+    verTono() {
+        console.log("Color: " + this.tono);
+    }
+}
+
+class Redondo extends Forma {
+    constructor(diametro, tono) {
+        super(tono);
+        this.diametro = diametro;
+    }
+    calcular() {
+        return Math.PI * Math.pow(this.diametro, 2);
+    }
+}
+
+const r1 = new Redondo(4.8, "Amarillo");
+r1.verTono();
+console.log("Área: " + r1.calcular());
