@@ -1,0 +1,11 @@
+let arreglo = [10, 20, 30, 40, 50];
+
+const prompt = require("prompt-sync")();
+
+let valor = parseInt(prompt("Ingresa un numero para colocar en el arreglo: "));
+let indice = parseInt(prompt("Indica la posicion (1-5) donde deseas insertarlo: "));
+
+arreglo[indice - 1] = valor;
+
+console.log("Contenido final del arreglo:");
+console.log(arreglo.join(" "));
