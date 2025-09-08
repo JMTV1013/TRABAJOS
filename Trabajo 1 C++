@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <array>
+#include <list>
+
+int main() {
+    // Declaración de un arreglo estático con 5 elementos
+    std::array<int, 5> datos;
+
+    // Lista de nombres inicializada con algunos valores
+    std::list<std::string> personas = {"Ana", "Luis", "Marta"};
+
+    // Asignación a la primera posición del arreglo
+    datos.at(0) = 10;
+
+    // Mostrar el segundo nombre de la lista
+    auto it = personas.begin();
+    std::advance(it, 1); // Avanza al segundo elemento
+    std::cout << *it << std::endl;
+
+    return 0;
+}
