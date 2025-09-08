@@ -1,0 +1,5 @@
+numeros = [1, 2, 3, 4, 5]
+
+print("El contenido del arreglo es este:")
+for i in range(len(numeros)):
+    print(numeros[i])
