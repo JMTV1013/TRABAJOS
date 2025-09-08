@@ -1,0 +1,9 @@
+arreglo = [10, 20, 30, 40, 50]
+
+valor = int(input("Ingresa un numero para colocar en el arreglo: "))
+indice = int(input("Indica la posicion (1-5) donde deseas insertarlo: "))
+
+arreglo[indice - 1] = valor
+
+print("Contenido final del arreglo:")
+print(" ".join(map(str, arreglo)))
