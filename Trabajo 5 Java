@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Programa {
+    public static void main(String[] args) {
+        int[] arreglo = {10, 20, 30, 40, 50};
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingresa un numero para colocar en el arreglo: ");
+        int valor = sc.nextInt();
+        System.out.print("Indica la posicion (1-5) donde deseas insertarlo: ");
+        int indice = sc.nextInt();
+
+        arreglo[indice - 1] = valor;
+
+        System.out.println("Contenido final del arreglo:");
+        for (int num : arreglo) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
