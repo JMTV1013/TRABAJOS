@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class BusquedaArray {
     public static void main(String[] args) {
-        // Arreglo con algunos valores diferentes
+        // Arreglo con algunos valores
         int[] valores = { 7, 14, 21, 28, 35 };
 
         Scanner entrada = new Scanner(System.in);
