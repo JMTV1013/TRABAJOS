@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arreglo[5] = {10, 20, 30, 40, 50};
+    int valor, indice;
+
+    cout << "Ingresa un numero para colocar en el arreglo: ";
+    cin >> valor;
+    cout << "Indica la posicion (1-5) donde deseas insertarlo: ";
+    cin >> indice;
+
+    arreglo[indice - 1] = valor;
+
+    cout << "Contenido final del arreglo:" << endl;
+
+    int i = 0;
+    while (i < 5) {
+        cout << arreglo[i] << " ";
+        i++;
+    }
+    cout << endl;
+
+    return 0;
+}
