@@ -1,0 +1,11 @@
+# Arreglo con 5 posiciones
+numeros = [0, 0, 0, 0, 0]
+
+# Lista de ciudades
+ciudades = ["mexico", "madrid", "roma"]
+
+# Poner un valor en la primera posición
+numeros[0] = 40
+
+# Mostrar el segundo elemento de la lista
+print(ciudades[1])
