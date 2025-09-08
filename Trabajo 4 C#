@@ -1,0 +1,30 @@
+using System;
+
+abstract class Forma {
+    private string tono;
+    public Forma(string t) {
+        tono = t;
+    }
+    public abstract double Calcular();
+    public void VerTono() {
+        Console.WriteLine("Color: " + tono);
+    }
+}
+
+class Redondo : Forma {
+    private double radio;
+    public Redondo(double r, string t) : base(t) {
+        radio = r;
+    }
+    public override double Calcular() {
+        return Math.PI * Math.Pow(radio, 2);
+    }
+}
+
+class Program {
+    static void Main() {
+        Redondo r1 = new Redondo(6.2, "Verde");
+        r1.VerTono();
+        Console.WriteLine("Área: " + r1.Calcular());
+    }
+}
