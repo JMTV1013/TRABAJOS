@@ -1,0 +1,6 @@
+let numeros = [1, 2, 3, 4, 5];
+
+console.log("El contenido del arreglo es este:");
+for (let i = 0; i < numeros.length; i++) {
+    console.log(numeros[i]);
+}
