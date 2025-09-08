@@ -1,0 +1,15 @@
+using System;
+
+class Programa
+{
+    static void Main(string[] args)
+    {
+        int[] valores = { 1, 2, 3, 4, 5 };
+
+        Console.WriteLine("El contenido del arreglo es: ");
+        foreach (int x in valores)
+        {
+            Console.WriteLine(x);
+        }
+    }
+}
