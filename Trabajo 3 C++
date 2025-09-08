@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    // Arreglo con algunos valores diferentes
+    // Arreglo con algunos valores
     int valores[] = {11, 22, 33, 44, 55};
     int tam = sizeof(valores) / sizeof(valores[0]);
 
