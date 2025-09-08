@@ -1,0 +1,32 @@
+using System;
+
+class BusquedaArray {
+    static void Main() {
+        // Arreglo con algunos valores
+        int[] valores = { 10, 20, 30, 40, 50 };
+
+        Console.Write("Escribe un número a localizar: ");
+        int buscado = int.Parse(Console.ReadLine());
+
+        int posicion = -1;
+
+        // Búsqueda manual
+        for (int i = 0; i < valores.Length; i++) {
+            if (valores[i] == buscado) {
+                posicion = i;
+                break;
+            }
+        }
+
+        if (posicion != -1) {
+            Console.WriteLine("Se encontró el valor en la posición: " + posicion);
+        } else {
+            Console.WriteLine("El valor no está en el arreglo");
+        }
+
+        Console.WriteLine("Estos son los elementos del arreglo:");
+        foreach (int v in valores) {
+            Console.WriteLine(v);
+        }
+    }
+}
