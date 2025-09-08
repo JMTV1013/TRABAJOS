@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+
+public class EjemploBasico {
+    public static void main(String[] args) {
+        // Arreglo con 5 elementos
+        int[] numeros = new int[5];
+
+        // Lista de frutas
+        ArrayList<String> frutas = new ArrayList<String>();
+        frutas.add("manzana");
+        frutas.add("pera");
+        frutas.add("uva");
+
+        // Poner un valor en la primera posición
+        numeros[0] = 15;
+
+        // Mostrar el segundo elemento de la lista
+        System.out.println(frutas.get(1));
+    }
+}
