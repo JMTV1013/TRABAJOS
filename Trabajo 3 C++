@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Arreglo con algunos valores diferentes
+    int valores[] = {11, 22, 33, 44, 55};
+    int tam = sizeof(valores) / sizeof(valores[0]);
+
+    int buscado;
+    cout << "Escribe un número a localizar: ";
+    cin >> buscado;
+
+    int posicion = -1;
+
+    // Búsqueda manual
+    for (int i = 0; i < tam; i++) {
+        if (valores[i] == buscado) {
+            posicion = i;
+            break;
+        }
+    }
+
+    if (posicion != -1) {
+        cout << "Se encontró el valor en la posición: " << posicion << endl;
+    } else {
+        cout << "El valor no está en el arreglo" << endl;
+    }
+
+    cout << "Estos son los elementos del arreglo:" << endl;
+    for (int i = 0; i < tam; i++) {
+        cout << valores[i] << endl;
+    }
+
+    return 0;
+}
