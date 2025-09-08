@@ -1,0 +1,19 @@
+using System;
+
+class Programa {
+    static void Main() {
+        int[] arreglo = {10, 20, 30, 40, 50};
+        Console.Write("Ingresa un numero para colocar en el arreglo: ");
+        int valor = int.Parse(Console.ReadLine());
+        Console.Write("Indica la posicion (1-5) donde deseas insertarlo: ");
+        int indice = int.Parse(Console.ReadLine());
+
+        arreglo[indice - 1] = valor;
+
+        Console.WriteLine("Contenido final del arreglo:");
+        foreach (int num in arreglo) {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+}
