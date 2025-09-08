@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Forma {
+    string tono;
+public:
+    Forma(string t) : tono(t) {}
+    virtual double calcular() = 0;
+    void verTono() {
+        cout << "Color: " << tono << endl;
+    }
+};
+
+class Redondo : public Forma {
+    double diametro;
+public:
+    Redondo(double d, string t) : Forma(t), diametro(d) {}
+    double calcular() override {
+        return M_PI * pow(diametro, 2);
+    }
+};
+
+int main() {
+    Redondo r1(7.5, "Azul");
+    r1.verTono();
+    cout << "Area: " << r1.calcular() << endl;
+    return 0;
+}
