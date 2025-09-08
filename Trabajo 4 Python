@@ -1,0 +1,25 @@
+import math
+from abc import ABC, abstractmethod
+
+class Forma(ABC):
+    def __init__(self, tono):
+        self.tono = tono
+
+    @abstractmethod
+    def calcular(self):
+        pass
+
+    def ver_tono(self):
+        print("Color:", self.tono)
+
+class Redondo(Forma):
+    def __init__(self, medida, tono):
+        super().__init__(tono)
+        self.medida = medida
+
+    def calcular(self):
+        return math.pi * (self.medida ** 2)
+
+r1 = Redondo(11.3, "Morado")
+r1.ver_tono()
+print("Área:", r1.calcular())
