@@ -1,0 +1,30 @@
+abstract class Forma {
+    private String tono;
+    public Forma(String t) {
+        tono = t;
+    }
+    public abstract double calcular();
+    public void verTono() {
+        System.out.println("Color: " + tono);
+    }
+}
+
+class Redondo extends Forma {
+    private double lado;
+    public Redondo(double l, String t) {
+        super(t);
+        lado = l;
+    }
+    @Override
+    public double calcular() {
+        return Math.PI * Math.pow(lado, 2);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Redondo r1 = new Redondo(9.0, "Rojo");
+        r1.verTono();
+        System.out.println("Área: " + r1.calcular());
+    }
+}
