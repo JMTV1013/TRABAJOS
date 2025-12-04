@@ -3,13 +3,12 @@
 
 #include <string>
 #include <vector>
-
 using namespace std;
 
 struct Nodo {
     int id;
     string nombre;
-    string tipo;  // carpeta o archivo
+    string tipo;    // el tipo puede ser carpeta o archivo
     string contenido;
     vector<Nodo*> hijos;
     Nodo* padre;

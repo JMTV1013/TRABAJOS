@@ -16,3 +16,15 @@ Lo que avancé fue:
 - Dejé todo listo para comenzar a programar las funciones del árbol en el Día 2.
 
 Este día fue principalmente de preparación y organización del proyecto.
+
+## Progreso del Día 2
+
+Hoy empecé a implementar las funciones principales del árbol.  
+Lo que avancé fue lo siguiente:
+
+- Programé el constructor del árbol, que crea la raíz con el nombre "root".
+- Implementé el destructor para liberar correctamente todos los nodos del árbol.
+- Agregué la función `buscarRuta()`, que permite encontrar un nodo usando rutas como `/Carpeta/Subcarpeta`.
+- Modifiqué el `main.cpp` para hacer algunas pruebas básicas y confirmar que la búsqueda funciona.
+
+Con esto ya tengo lo necesario para continuar con las operaciones de creación y movimiento en el Día 3.

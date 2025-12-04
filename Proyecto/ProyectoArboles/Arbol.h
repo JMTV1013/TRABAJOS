@@ -2,9 +2,10 @@
 #define ARBOL_H
 
 #include <string>
+using namespace std;
+
 #include "Nodo.h"
 
-using namespace std;
 class Arbol {
 private:
     Nodo* raiz;
@@ -17,9 +18,9 @@ public:
     Nodo* getRaiz() const;
     int getUltimoId() const;
 
-    Nodo* buscarRuta(const string& ruta); // se implementará en Día 2
+    Nodo* buscarRuta(const string& ruta);
 
-    // funciones que se implementarán más adelante:
+    // Se implementarán en días posteriores:
     // crearCarpeta
     // crearArchivo
     // eliminar

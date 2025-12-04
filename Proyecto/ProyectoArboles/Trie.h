@@ -4,13 +4,13 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 class TrieNode {
 public:
     bool finPalabra;
     unordered_map<char, TrieNode*> hijos;
+
     TrieNode() : finPalabra(false) {}
 };
 
