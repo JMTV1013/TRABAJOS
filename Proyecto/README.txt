@@ -17,7 +17,7 @@ Lo que avancé fue:
 
 Este día fue principalmente de preparación y organización del proyecto.
 
-## Progreso del Día 2
+## Progreso del Día 2-3
 
 Hoy empecé a implementar las funciones principales del árbol.  
 Lo que avancé fue lo siguiente:
@@ -27,4 +27,29 @@ Lo que avancé fue lo siguiente:
 - Agregué la función `buscarRuta()`, que permite encontrar un nodo usando rutas como `/Carpeta/Subcarpeta`.
 - Modifiqué el `main.cpp` para hacer algunas pruebas básicas y confirmar que la búsqueda funciona.
 
-Con esto ya tengo lo necesario para continuar con las operaciones de creación y movimiento en el Día 3.
+## Progreso del Día 3
+
+Hoy implementé las funciones básicas para crear nodos dentro del árbol:
+
+- `crearCarpeta()` permite añadir carpetas dentro de una ruta existente.
+- `crearArchivo()` hace lo mismo pero para archivos, incluyendo su contenido.
+- Agregué validaciones simples para evitar crear nodos en rutas inexistentes.
+- Probé las funciones desde `main.cpp` creando algunas carpetas de ejemplo.
+
+Con esto, el árbol ya puede crecer de forma dinámica.
+
+---
+
+## Progreso del Día 4
+
+En este día implementé la persistencia del proyecto utilizando JSON.  
+Ahora el árbol se puede guardar en un archivo `.json` y también cargarlo después.
+
+Las funciones nuevas fueron:
+
+- `guardarJSON()` → convierte el árbol completo a un JSON.
+- `cargarJSON()` → reconstruye el árbol desde el archivo.
+- Implementé funciones internas para convertir de Nodo a JSON y viceversa.
+
+Probé el guardado y carga desde el `main.cpp` y funciona correctamente.
+

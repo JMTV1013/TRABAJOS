@@ -20,13 +20,13 @@ public:
 
     Nodo* buscarRuta(const string& ruta);
 
-    // Se implementarán en días posteriores:
-    // crearCarpeta
-    // crearArchivo
-    // eliminar
-    // mover
-    // guardarJSON
-    // cargarJSON
+    // insertar nodos:
+    Nodo* crearCarpeta(const string& ruta, const string& nombre);
+    Nodo* crearArchivo(const string& ruta, const string& nombre, const string& contenido);
+
+    // JSON:
+    void guardarJSON(const string& archivo);
+    void cargarJSON(const string& archivo);
 };
 
 #endif

@@ -4,25 +4,18 @@
 using namespace std;
 
 int main() {
-    cout << "Proyecto Árboles - Día 2\n";
-
     Arbol arbol;
 
-    if (arbol.getRaiz() != nullptr) {
-        cout << "Raíz creada: " << arbol.getRaiz()->nombre << "\n";
-    }
+    // Día 3 — Crear carpetas y archivos
+    arbol.crearCarpeta("/", "Documentos");
+    arbol.crearCarpeta("/Documentos", "Tareas");
+    arbol.crearArchivo("/Documentos/Tareas", "tarea1.txt", "Contenido de prueba");
 
-    cout << "Buscando '/': ";
-    auto* r1 = arbol.buscarRuta("/");
-    cout << (r1 ? "Encontrado\n" : "No encontrado\n");
+    // Guardar
+    arbol.guardarJSON("arbol.json");
 
-    cout << "Buscando '/root': ";
-    auto* r2 = arbol.buscarRuta("/root");
-    cout << (r2 ? "Encontrado\n" : "No encontrado\n");
-
-    cout << "Buscando '/CarpetaFake': ";
-    auto* r3 = arbol.buscarRuta("/CarpetaFake");
-    cout << (r3 ? "Encontrado\n" : "No encontrado\n");
+    // Cargar
+    arbol.cargarJSON("arbol.json");
 
     return 0;
 }
