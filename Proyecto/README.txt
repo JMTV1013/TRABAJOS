@@ -53,3 +53,16 @@ Las funciones nuevas fueron:
 
 Probé el guardado y carga desde el `main.cpp` y funciona correctamente.
 
+
+## Progreso Día 5 y Día 6 — Implementación del Trie
+
+En estos días implementé la estructura Trie, que sirve como un índice de nombres
+para permitir autocompletar archivos y carpetas. Cada vez que creo un nodo nuevo
+en el árbol (carpeta o archivo), también inserto su nombre en el Trie.
+
+Luego añadí la función `autocompletar(prefijo)` que regresa una lista de posibles
+coincidencias. Probé esto desde `main.cpp` usando ejemplos como “ta”, y devuelve
+resultados como “tarea1.txt”, “tabla.xlsx” y “tarjeta.png”.
+
+Con esto, ya tengo el sistema de autocompletado funcionando.
+

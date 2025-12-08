@@ -7,27 +7,21 @@
 using json = nlohmann::json;
 using namespace std;
 
-// ===================================================
-// Liberar memoria del árbol
-// ===================================================
+// Liberar memoria
 static void liberarNodo(Nodo* n) {
     if (!n) return;
-    for (auto* hijo : n->hijos)
-        liberarNodo(hijo);
+    for (auto* h : n->hijos)
+        liberarNodo(h);
     delete n;
 }
 
-// ===================================================
 // Constructor
-// ===================================================
 Arbol::Arbol() {
     raiz = new Nodo(0, "root", "carpeta");
     ultimoId = 1;
 }
 
-// ===================================================
 // Destructor
-// ===================================================
 Arbol::~Arbol() {
     liberarNodo(raiz);
 }
@@ -35,37 +29,33 @@ Arbol::~Arbol() {
 Nodo* Arbol::getRaiz() const { return raiz; }
 int Arbol::getUltimoId() const { return ultimoId; }
 
-// ===================================================
-// Buscar ruta (Día 2)
-// ===================================================
+// Buscar ruta
 Nodo* Arbol::buscarRuta(const string& ruta) {
     if (ruta == "/" || ruta == "/root" || ruta == "")
         return raiz;
 
     stringstream ss(ruta);
-    string segmento;
+    string seg;
     Nodo* actual = raiz;
 
-    while (getline(ss, segmento, '/')) {
-        if (segmento.empty()) continue;
+    while (getline(ss, seg, '/')) {
+        if (seg.empty()) continue;
 
-        bool encontrado = false;
-        for (auto* hijo : actual->hijos) {
-            if (hijo->nombre == segmento) {
-                actual = hijo;
-                encontrado = true;
+        bool enc = false;
+        for (auto* h : actual->hijos) {
+            if (h->nombre == seg) {
+                actual = h;
+                enc = true;
                 break;
             }
         }
-        if (!encontrado) return nullptr;
+        if (!enc) return nullptr;
     }
 
     return actual;
 }
 
-// ===================================================
-// Día 3 — Crear Carperta
-// ===================================================
+// Crear carpeta
 Nodo* Arbol::crearCarpeta(const string& ruta, const string& nombre) {
     Nodo* padre = buscarRuta(ruta);
     if (!padre || padre->tipo != "carpeta") {
@@ -77,12 +67,12 @@ Nodo* Arbol::crearCarpeta(const string& ruta, const string& nombre) {
     nueva->padre = padre;
     padre->hijos.push_back(nueva);
 
+    trie.insertar(nombre);
+
     return nueva;
 }
 
-// ===================================================
-// Día 3 — Crear Archivo
-// ===================================================
+// Crear archivo
 Nodo* Arbol::crearArchivo(const string& ruta, const string& nombre, const string& contenido) {
     Nodo* padre = buscarRuta(ruta);
     if (!padre || padre->tipo != "carpeta") {
@@ -95,12 +85,17 @@ Nodo* Arbol::crearArchivo(const string& ruta, const string& nombre, const string
     nuevo->padre = padre;
     padre->hijos.push_back(nuevo);
 
+    trie.insertar(nombre);
+
     return nuevo;
 }
 
-// ===================================================
-// Día 4 — NODO → JSON
-// ===================================================
+// Autocompletar
+vector<string> Arbol::autocompletar(const string& prefijo) {
+    return trie.autocompletar(prefijo);
+}
+
+// Nodo → JSON
 static json nodoAJson(Nodo* n) {
     json j;
     j["id"] = n->id;
@@ -109,15 +104,13 @@ static json nodoAJson(Nodo* n) {
     j["contenido"] = n->contenido;
 
     j["children"] = json::array();
-    for (auto* hijo : n->hijos)
-        j["children"].push_back(nodoAJson(hijo));
+    for (auto* h : n->hijos)
+        j["children"].push_back(nodoAJson(h));
 
     return j;
 }
 
-// ===================================================
-// Día 4 — JSON → NODO
-// ===================================================
+// JSON → Nodo
 static Nodo* jsonANodo(const json& j, Nodo* padre = nullptr) {
     Nodo* n = new Nodo(j["id"], j["nombre"], j["tipo"]);
     n->contenido = j["contenido"];
@@ -131,9 +124,7 @@ static Nodo* jsonANodo(const json& j, Nodo* padre = nullptr) {
     return n;
 }
 
-// ===================================================
 // Guardar JSON
-// ===================================================
 void Arbol::guardarJSON(const string& archivo) {
     json j;
     j["root"] = nodoAJson(raiz);
@@ -146,9 +137,7 @@ void Arbol::guardarJSON(const string& archivo) {
     cout << "Guardado en " << archivo << endl;
 }
 
-// ===================================================
 // Cargar JSON
-// ===================================================
 void Arbol::cargarJSON(const string& archivo) {
     ifstream in(archivo);
     if (!in.is_open()) {
@@ -162,7 +151,7 @@ void Arbol::cargarJSON(const string& archivo) {
 
     liberarNodo(raiz);
 
-    raiz = jsonANodo(j["root"], nullptr);
+    raiz = jsonANodo(j["root"]);
     ultimoId = j["ultimoId"];
 
     cout << "Cargado desde " << archivo << endl;

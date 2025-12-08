@@ -3,18 +3,20 @@
 
 #include <string>
 #include <vector>
+
 using namespace std;
 
 struct Nodo {
     int id;
     string nombre;
-    string tipo;    // el tipo puede ser carpeta o archivo
+    string tipo;       // carpeta o archivo
     string contenido;
-    vector<Nodo*> hijos;
-    Nodo* padre;
 
-    Nodo(int id, const string& nombre, const string& tipo)
-        : id(id), nombre(nombre), tipo(tipo), contenido(""), padre(nullptr) {
+    Nodo* padre;
+    vector<Nodo*> hijos;
+
+    Nodo(int _id, const string& _nombre, const string& _tipo)
+        : id(_id), nombre(_nombre), tipo(_tipo), padre(nullptr) {
     }
 };
 

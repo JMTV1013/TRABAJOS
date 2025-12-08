@@ -1,10 +1,48 @@
 {
     "root": {
-        "children": [],
+        "children": [
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "contenido": "texto prueba",
+                                "id": 3,
+                                "nombre": "tarea1.txt",
+                                "tipo": "archivo"
+                            },
+                            {
+                                "children": [],
+                                "contenido": "imagen",
+                                "id": 4,
+                                "nombre": "tarjeta.png",
+                                "tipo": "archivo"
+                            },
+                            {
+                                "children": [],
+                                "contenido": "hoja cálculo",
+                                "id": 5,
+                                "nombre": "tabla.xlsx",
+                                "tipo": "archivo"
+                            }
+                        ],
+                        "contenido": "",
+                        "id": 2,
+                        "nombre": "Tareas",
+                        "tipo": "carpeta"
+                    }
+                ],
+                "contenido": "",
+                "id": 1,
+                "nombre": "Documentos",
+                "tipo": "carpeta"
+            }
+        ],
         "contenido": "",
         "id": 0,
         "nombre": "root",
         "tipo": "carpeta"
     },
-    "ultimoId": 1
+    "ultimoId": 6
 }
