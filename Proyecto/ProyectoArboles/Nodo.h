@@ -9,7 +9,7 @@ using namespace std;
 struct Nodo {
     int id;
     string nombre;
-    string tipo;       // carpeta o archivo
+    string tipo;
     string contenido;
 
     Nodo* padre;

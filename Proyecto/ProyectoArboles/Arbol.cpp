@@ -1,11 +1,13 @@
 ﻿#include "Arbol.h"
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include "json.hpp"
 
 using json = nlohmann::json;
 using namespace std;
 
+// ---------- util ----------
 static void liberarNodo(Nodo* n) {
     if (!n) return;
     for (auto* h : n->hijos)
@@ -13,6 +15,7 @@ static void liberarNodo(Nodo* n) {
     delete n;
 }
 
+// ---------- constructor / destructor ----------
 Arbol::Arbol() {
     raiz = new Nodo(0, "root", "carpeta");
     ultimoId = 1;
@@ -23,6 +26,7 @@ Arbol::~Arbol() {
     liberarNodo(raiz);
 }
 
+// ---------- operaciones existentes ----------
 Nodo* Arbol::buscarRuta(const string& ruta) {
     if (ruta == "/" || ruta.empty())
         return raiz;
@@ -136,6 +140,7 @@ vector<string> Arbol::autocompletar(const string& prefijo) {
     return trie.autocompletar(prefijo);
 }
 
+// ---------- export ----------
 static void preorden(Nodo* n, ofstream& out) {
     if (!n) return;
     out << n->id << " " << n->nombre << endl;
@@ -145,4 +150,61 @@ static void preorden(Nodo* n, ofstream& out) {
 
 void Arbol::exportarPreorden(ofstream& out) {
     preorden(raiz, out);
+}
+
+// =====================================================
+// ==================== JSON ============================
+// =====================================================
+
+static json nodoAJson(Nodo* n) {
+    json j;
+    j["id"] = n->id;
+    j["nombre"] = n->nombre;
+    j["tipo"] = n->tipo;
+    j["contenido"] = n->contenido;
+    j["children"] = json::array();
+
+    for (auto* h : n->hijos)
+        j["children"].push_back(nodoAJson(h));
+
+    return j;
+}
+
+static Nodo* jsonANodo(const json& j, Nodo* padre, unordered_map<int, Nodo*>& indice) {
+    Nodo* n = new Nodo(j["id"], j["nombre"], j["tipo"]);
+    n->contenido = j["contenido"];
+    n->padre = padre;
+    indice[n->id] = n;
+
+    for (auto& hijo : j["children"]) {
+        Nodo* h = jsonANodo(hijo, n, indice);
+        n->hijos.push_back(h);
+    }
+    return n;
+}
+
+void Arbol::guardarJSON(const string& archivo) {
+    json j;
+    j["ultimoId"] = ultimoId;
+    j["root"] = nodoAJson(raiz);
+
+    ofstream out(archivo);
+    out << j.dump(4);
+    out.close();
+}
+
+void Arbol::cargarJSON(const string& archivo) {
+    ifstream in(archivo);
+    if (!in.is_open()) return;
+
+    json j;
+    in >> j;
+    in.close();
+
+    liberarNodo(raiz);
+    indiceId.clear();
+    papelera.clear();
+
+    raiz = jsonANodo(j["root"], nullptr, indiceId);
+    ultimoId = j["ultimoId"];
 }
