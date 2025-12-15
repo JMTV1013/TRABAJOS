@@ -66,3 +66,30 @@ resultados como “tarea1.txt”, “tabla.xlsx” y “tarjeta.png”.
 
 Con esto, ya tengo el sistema de autocompletado funcionando.
 
+## Interfaz de consola (Días 7–9)
+
+Se implementó una interfaz de consola basada en comandos similares a los de un
+sistema de archivos. Esto permite crear, mover, eliminar y buscar nodos dentro
+del árbol de forma interactiva.
+
+También se añadió una papelera temporal para manejar eliminaciones de forma segura.
+
+## Pruebas e integración (Días 10–11)
+
+Se realizaron pruebas con rutas inválidas, nombres duplicados y árboles con gran
+cantidad de nodos, verificando la consistencia del sistema después de operaciones
+de movimiento, eliminación y restauración.
+
+## Documentación y uso (Día 12)
+
+Se documentaron los comandos disponibles y el flujo de uso del sistema, permitiendo
+una ejecución clara y reproducible del proyecto.
+
+## Demo y preparación (Día 13)
+
+Se preparó un flujo de comandos de demostración que permite mostrar el
+funcionamiento completo del proyecto, incluyendo creación, búsqueda, eliminación,
+restauración y exportación del árbol.
+
+
+

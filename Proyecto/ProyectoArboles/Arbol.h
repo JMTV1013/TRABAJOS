@@ -3,6 +3,9 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <fstream>
+
 using namespace std;
 
 #include "Nodo.h"
@@ -12,25 +15,32 @@ class Arbol {
 private:
     Nodo* raiz;
     int ultimoId;
-    Trie trie;  // Día 5-6
+    Trie trie;
+
+    unordered_map<int, Nodo*> indiceId;
+    vector<Nodo*> papelera;
 
 public:
     Arbol();
     ~Arbol();
 
-    Nodo* getRaiz() const;
-    int getUltimoId() const;
-
     Nodo* buscarRuta(const string& ruta);
+    Nodo* buscarPorId(int id);
 
-    // Día 3
     Nodo* crearCarpeta(const string& ruta, const string& nombre);
     Nodo* crearArchivo(const string& ruta, const string& nombre, const string& contenido);
 
-    // Día 5–6
-    vector<string> autocompletar(const string& prefijo);
+    bool eliminar(const string& ruta);
+    bool restaurar(int id);
+    void vaciarPapelera();
+    void listarPapelera();
 
-    // Día 4
+    bool mover(const string& origen, const string& destino);
+    bool renombrar(const string& ruta, const string& nuevoNombre);
+
+    vector<string> autocompletar(const string& prefijo);
+    void exportarPreorden(ofstream& out);
+
     void guardarJSON(const string& archivo);
     void cargarJSON(const string& archivo);
 };
